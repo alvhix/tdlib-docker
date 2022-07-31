@@ -1,8 +1,8 @@
 # TdLib docker build
 
-Dockerfile to compile TdLib in a docker container
+Dockerfile to compile TDLib in an Alpine docker container
 
 ### Run
-Execute `docker run -v ./build:/usr/local -it alvhix/tdlib-docker`
 
-This command will pull latest TdLib compiled binaries, zip, and place it under the build folder.
+With this command you will obtain a zip file with the TDLib binaries. You can extract it using Winrar, 7 zip or a similar program:
+`docker cp $(docker run -d alvhix/tdlib-docker):/tdlib/build.tar.gz $(pwd)/build.tar.gz`
