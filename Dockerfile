@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.17
 
 RUN apk update && \
     apk upgrade
@@ -8,10 +8,10 @@ RUN git clone https://github.com/tdlib/td.git && \
     rm -rf build && \
     mkdir build && \
     cd build && \
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr/local .. && \
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=../tdlib .. && \
     cmake --build . --target install && \
     cd ../.. && \
-    ls -l /usr/local
+    ls -l td/tdlib
 
-RUN tar -czvf build.tar.gz /usr/local
+RUN tar -czvf build.tar.gz td/tdlib
 CMD ["/bin/sh"]
